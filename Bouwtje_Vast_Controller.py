@@ -1,5 +1,7 @@
 import paramiko
+from secrets import SECRETS
 from time import sleep
+
 class PcController:
     def __init__(self):
         self.hostname = SECRETS['HOSTNAME']
