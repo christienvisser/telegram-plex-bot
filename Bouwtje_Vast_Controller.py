@@ -31,14 +31,20 @@ class PcController:
                 # Automatically add untrusted hosts
                 self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                 # Connect to the server
-                self.client.connect(self.hostname, port=self.port, username=self.username, key_filename=self.key_file_name)
-                
+                self.client.connect(
+                    hostname=self.hostname, 
+                    port=self.port, 
+                    username=self.username, 
+                    key_filename=self.key_file_name, 
+                    timeout=5
+                )
+
                 print("Connection succesfull")
                 return "Connection succesfull"
             except Exception as e:
                 print(str(e))
                 return "Connection Error"
-                
+
         print("Connection already found")
         return "Connection already available"
     
